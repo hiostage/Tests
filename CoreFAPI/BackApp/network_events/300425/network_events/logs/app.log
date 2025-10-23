@@ -1,0 +1,555 @@
+2025-04-28 09:57:27,685 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-04-28 09:57:27,687 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 09:57:27,694 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-04-28 09:57:27,696 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 09:57:27,702 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-04-28 09:57:27,705 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 09:57:27,710 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 09:57:27,728 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 09:57:27,733 - sqlalchemy.engine.Engine - INFO - [generated in 0.00547s] ('events', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 09:57:27,743 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 09:57:27,746 - sqlalchemy.engine.Engine - INFO - [cached since 0.01883s ago] ('event_registrations', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 09:57:27,751 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 09:57:27,755 - sqlalchemy.engine.Engine - INFO - [cached since 0.02766s ago] ('participants', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 09:57:27,762 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 09:58:28,801 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-04-28 09:58:28,803 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 09:58:28,808 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-04-28 09:58:28,809 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 09:58:28,813 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-04-28 09:58:28,815 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 09:58:28,819 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 09:58:28,827 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 09:58:28,829 - sqlalchemy.engine.Engine - INFO - [generated in 0.00235s] ('events', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 09:58:28,837 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 09:58:28,839 - sqlalchemy.engine.Engine - INFO - [cached since 0.01196s ago] ('event_registrations', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 09:58:28,842 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 09:58:28,844 - sqlalchemy.engine.Engine - INFO - [cached since 0.01668s ago] ('participants', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 09:58:28,847 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:03:25,944 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-04-28 10:03:25,946 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:03:25,951 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-04-28 10:03:25,953 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:03:25,958 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-04-28 10:03:25,959 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:03:25,963 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:03:25,975 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:03:25,977 - sqlalchemy.engine.Engine - INFO - [generated in 0.00209s] ('events', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:03:25,984 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:03:25,986 - sqlalchemy.engine.Engine - INFO - [cached since 0.01124s ago] ('event_registrations', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:03:25,989 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:03:25,991 - sqlalchemy.engine.Engine - INFO - [cached since 0.01609s ago] ('participants', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:03:25,995 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:04:24,359 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-04-28 10:04:24,361 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:04:24,366 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-04-28 10:04:24,368 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:04:24,371 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-04-28 10:04:24,373 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:04:24,376 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:04:24,386 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:04:24,388 - sqlalchemy.engine.Engine - INFO - [generated in 0.00226s] ('events', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:04:24,394 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:04:24,396 - sqlalchemy.engine.Engine - INFO - [cached since 0.009955s ago] ('event_registrations', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:04:24,399 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:04:24,401 - sqlalchemy.engine.Engine - INFO - [cached since 0.01504s ago] ('participants', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:04:24,404 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:04:41,618 - app - INFO - Запрос на создание события: title='ZXCZXC' description='ASDASD' location='Ru' is_online=False start_time=datetime.datetime(2025, 4, 28, 10, 4, 41, 617886) end_time=datetime.datetime(2025, 4, 28, 11, 4, 41, 617893)
+2025-04-28 10:04:41,632 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:04:41,642 - sqlalchemy.engine.Engine - INFO - INSERT INTO events (title, description, location, is_online, start_time, end_time, created_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::BOOLEAN, $5::TIMESTAMP WITHOUT TIME ZONE, $6::TIMESTAMP WITHOUT TIME ZONE, $7::TIMESTAMP WITHOUT TIME ZONE) RETURNING events.id
+2025-04-28 10:04:41,645 - sqlalchemy.engine.Engine - INFO - [generated in 0.00342s] ('ZXCZXC', 'ASDASD', 'Ru', False, datetime.datetime(2025, 4, 28, 10, 4, 41, 617886), datetime.datetime(2025, 4, 28, 11, 4, 41, 617893), datetime.datetime(2025, 4, 28, 10, 4, 41, 642124))
+2025-04-28 10:04:41,653 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:04:41,812 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:04:41,819 - sqlalchemy.engine.Engine - INFO - SELECT events.id, events.title, events.description, events.location, events.is_online, events.start_time, events.end_time, events.created_at 
+FROM events 
+WHERE events.id = $1::INTEGER
+2025-04-28 10:04:41,821 - sqlalchemy.engine.Engine - INFO - [generated in 0.00255s] (73,)
+2025-04-28 10:04:41,828 - app - INFO - Событие успешно создано: <app.models.event.Event object at 0x7f508e827f10>
+2025-04-28 10:04:41,831 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:05:05,950 - app - INFO - Запрос на получение события с ID: 6
+2025-04-28 10:05:05,952 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:05:05,955 - sqlalchemy.engine.Engine - INFO - SELECT events.id, events.title, events.description, events.location, events.is_online, events.start_time, events.end_time, events.created_at 
+FROM events 
+WHERE events.id = $1::INTEGER
+2025-04-28 10:05:05,957 - sqlalchemy.engine.Engine - INFO - [generated in 0.00192s] (6,)
+2025-04-28 10:05:05,961 - app - WARNING - Событие с ID 6 не найдено
+2025-04-28 10:05:05,963 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:05:18,832 - app - INFO - Запрос на получение списка всех событий
+2025-04-28 10:05:18,836 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:05:18,840 - sqlalchemy.engine.Engine - INFO - SELECT events.id, events.title, events.description, events.location, events.is_online, events.start_time, events.end_time, events.created_at 
+FROM events
+2025-04-28 10:05:18,843 - sqlalchemy.engine.Engine - INFO - [generated in 0.00325s] ()
+2025-04-28 10:05:18,849 - app - INFO - Найдено 5 событий
+2025-04-28 10:05:18,854 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:09:45,000 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-04-28 10:09:45,003 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:09:45,008 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-04-28 10:09:45,010 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:09:45,014 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-04-28 10:09:45,016 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:09:45,022 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:09:45,032 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:09:45,034 - sqlalchemy.engine.Engine - INFO - [generated in 0.00239s] ('events', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:09:45,043 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:09:45,045 - sqlalchemy.engine.Engine - INFO - [cached since 0.01257s ago] ('event_registrations', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:09:45,048 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:09:45,049 - sqlalchemy.engine.Engine - INFO - [cached since 0.01734s ago] ('participants', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:09:45,053 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:10:36,391 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-04-28 10:10:36,393 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:10:36,398 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-04-28 10:10:36,401 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:10:36,406 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-04-28 10:10:36,408 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:10:36,412 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:10:36,423 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:10:36,425 - sqlalchemy.engine.Engine - INFO - [generated in 0.00226s] ('events', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:10:36,431 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:10:36,433 - sqlalchemy.engine.Engine - INFO - [cached since 0.01089s ago] ('event_registrations', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:10:36,438 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:10:36,440 - sqlalchemy.engine.Engine - INFO - [cached since 0.01768s ago] ('participants', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:10:36,444 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:11:06,634 - httpx - INFO - HTTP Request: GET http://mock_auth:8080/check_session "HTTP/1.1 200 OK"
+2025-04-28 10:11:06,642 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:11:06,662 - sqlalchemy.engine.Engine - INFO - SELECT events.id AS events_id, events.title AS events_title, events.description AS events_description, events.location AS events_location, events.is_online AS events_is_online, events.start_time AS events_start_time, events.end_time AS events_end_time, events.created_at AS events_created_at 
+FROM events 
+WHERE events.id = $1::INTEGER
+2025-04-28 10:11:06,664 - sqlalchemy.engine.Engine - INFO - [generated in 0.00199s] (1,)
+2025-04-28 10:11:06,673 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id, event_registrations.event_id, event_registrations.user_id, event_registrations.registered_at 
+FROM event_registrations 
+WHERE event_registrations.event_id = $1::INTEGER AND event_registrations.user_id = $2::INTEGER
+2025-04-28 10:11:06,675 - sqlalchemy.engine.Engine - INFO - [generated in 0.00234s] (1, 1)
+2025-04-28 10:11:06,680 - app.services.participants - ERROR - Error during registration: 400: User already registered
+2025-04-28 10:11:06,682 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:11:24,615 - httpx - INFO - HTTP Request: GET http://mock_auth:8080/check_session "HTTP/1.1 200 OK"
+2025-04-28 10:11:24,620 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:11:24,622 - sqlalchemy.engine.Engine - INFO - SELECT events.id AS events_id, events.title AS events_title, events.description AS events_description, events.location AS events_location, events.is_online AS events_is_online, events.start_time AS events_start_time, events.end_time AS events_end_time, events.created_at AS events_created_at 
+FROM events 
+WHERE events.id = $1::INTEGER
+2025-04-28 10:11:24,624 - sqlalchemy.engine.Engine - INFO - [cached since 17.96s ago] (73,)
+2025-04-28 10:11:24,628 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id, event_registrations.event_id, event_registrations.user_id, event_registrations.registered_at 
+FROM event_registrations 
+WHERE event_registrations.event_id = $1::INTEGER AND event_registrations.user_id = $2::INTEGER
+2025-04-28 10:11:24,630 - sqlalchemy.engine.Engine - INFO - [cached since 17.96s ago] (73, 1)
+2025-04-28 10:11:24,637 - sqlalchemy.engine.Engine - INFO - INSERT INTO event_registrations (event_id, user_id, registered_at) VALUES ($1::INTEGER, $2::INTEGER, $3::TIMESTAMP WITHOUT TIME ZONE) RETURNING event_registrations.id
+2025-04-28 10:11:24,639 - sqlalchemy.engine.Engine - INFO - [generated in 0.00260s] (73, 1, datetime.datetime(2025, 4, 28, 10, 11, 24, 633867))
+2025-04-28 10:11:24,645 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:11:24,664 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:11:24,668 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id, event_registrations.event_id, event_registrations.user_id, event_registrations.registered_at 
+FROM event_registrations 
+WHERE event_registrations.id = $1::INTEGER
+2025-04-28 10:11:24,671 - sqlalchemy.engine.Engine - INFO - [generated in 0.00351s] (106,)
+2025-04-28 10:11:24,678 - app.services.participants - INFO - User 1 registered for event 73
+2025-04-28 10:11:24,680 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:11:55,044 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:11:55,056 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id, event_registrations.event_id, event_registrations.user_id, event_registrations.registered_at 
+FROM event_registrations 
+WHERE event_registrations.event_id = $1::INTEGER
+2025-04-28 10:11:55,059 - sqlalchemy.engine.Engine - INFO - [generated in 0.00390s] (73,)
+2025-04-28 10:11:55,074 - app.services.participants - INFO - Fetched participants for event 73
+2025-04-28 10:11:55,076 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:12:09,873 - httpx - INFO - HTTP Request: GET http://mock_auth:8080/check_session "HTTP/1.1 200 OK"
+2025-04-28 10:12:33,009 - httpx - INFO - HTTP Request: GET http://mock_auth:8080/check_session "HTTP/1.1 200 OK"
+2025-04-28 10:13:27,829 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:13:27,832 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id, event_registrations.event_id, event_registrations.user_id, event_registrations.registered_at 
+FROM event_registrations 
+WHERE event_registrations.event_id = $1::INTEGER
+2025-04-28 10:13:27,833 - sqlalchemy.engine.Engine - INFO - [cached since 92.79s ago] (73,)
+2025-04-28 10:13:27,837 - app.services.participants - INFO - Fetched participants for event 73
+2025-04-28 10:13:27,839 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:15:17,572 - httpx - INFO - HTTP Request: GET http://mock_auth:8080/check_session "HTTP/1.1 200 OK"
+2025-04-28 10:20:26,819 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-04-28 10:20:26,820 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:20:26,825 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-04-28 10:20:26,827 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:20:26,830 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-04-28 10:20:26,832 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:20:26,835 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:20:26,844 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:20:26,846 - sqlalchemy.engine.Engine - INFO - [generated in 0.00249s] ('events', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:20:26,852 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:20:26,878 - sqlalchemy.engine.Engine - INFO - [cached since 0.03486s ago] ('event_registrations', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:20:26,882 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:20:26,884 - sqlalchemy.engine.Engine - INFO - [cached since 0.04021s ago] ('participants', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:20:26,887 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:20:32,572 - httpx - INFO - HTTP Request: GET http://mock_auth:8080/check_session "HTTP/1.1 200 OK"
+2025-04-28 10:20:32,578 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:20:32,598 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id, event_registrations.event_id, event_registrations.user_id, event_registrations.registered_at 
+FROM event_registrations 
+WHERE event_registrations.event_id = $1::INTEGER AND event_registrations.user_id = $2::INTEGER
+2025-04-28 10:20:32,601 - sqlalchemy.engine.Engine - INFO - [generated in 0.00242s] (73, 1)
+2025-04-28 10:20:32,611 - sqlalchemy.engine.Engine - INFO - DELETE FROM event_registrations WHERE event_registrations.id = $1::INTEGER
+2025-04-28 10:20:32,614 - sqlalchemy.engine.Engine - INFO - [generated in 0.00292s] (106,)
+2025-04-28 10:20:32,618 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:20:32,644 - app.services.participants - INFO - User 1 removed from event 73
+2025-04-28 10:20:36,942 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:20:36,946 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id, event_registrations.event_id, event_registrations.user_id, event_registrations.registered_at 
+FROM event_registrations 
+WHERE event_registrations.event_id = $1::INTEGER
+2025-04-28 10:20:36,948 - sqlalchemy.engine.Engine - INFO - [generated in 0.00220s] (73,)
+2025-04-28 10:20:36,952 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:28:06,025 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-04-28 10:28:06,027 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:28:06,032 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-04-28 10:28:06,034 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:28:06,039 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-04-28 10:28:06,041 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:28:06,046 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:28:06,069 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:28:06,073 - sqlalchemy.engine.Engine - INFO - [generated in 0.00440s] ('events', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:28:06,081 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:28:06,083 - sqlalchemy.engine.Engine - INFO - [cached since 0.01486s ago] ('event_registrations', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:28:06,087 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:28:06,089 - sqlalchemy.engine.Engine - INFO - [cached since 0.02064s ago] ('participants', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:28:06,093 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:28:20,733 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-04-28 10:28:20,735 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:28:20,740 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-04-28 10:28:20,743 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:28:20,747 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-04-28 10:28:20,749 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:28:20,755 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:28:20,771 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:28:20,775 - sqlalchemy.engine.Engine - INFO - [generated in 0.00457s] ('events', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:28:20,785 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:28:20,787 - sqlalchemy.engine.Engine - INFO - [cached since 0.01675s ago] ('event_registrations', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:28:20,793 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:28:20,796 - sqlalchemy.engine.Engine - INFO - [cached since 0.02534s ago] ('participants', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:28:20,800 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:28:34,327 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-04-28 10:28:34,328 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:28:34,333 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-04-28 10:28:34,334 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:28:34,339 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-04-28 10:28:34,341 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:28:34,345 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:28:34,356 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:28:34,358 - sqlalchemy.engine.Engine - INFO - [generated in 0.00257s] ('events', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:28:34,365 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:28:34,368 - sqlalchemy.engine.Engine - INFO - [cached since 0.01216s ago] ('event_registrations', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:28:34,373 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:28:34,375 - sqlalchemy.engine.Engine - INFO - [cached since 0.01967s ago] ('participants', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:28:34,379 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:29:20,367 - httpx - INFO - HTTP Request: GET http://mock_auth:8080/check_session "HTTP/1.1 200 OK"
+2025-04-28 10:29:20,371 - app - INFO - Запрос на регистрацию пользователя с ID 1 для события 73
+2025-04-28 10:29:20,376 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:29:20,397 - sqlalchemy.engine.Engine - INFO - SELECT events.id AS events_id, events.title AS events_title, events.description AS events_description, events.location AS events_location, events.is_online AS events_is_online, events.start_time AS events_start_time, events.end_time AS events_end_time, events.created_at AS events_created_at 
+FROM events 
+WHERE events.id = $1::INTEGER
+2025-04-28 10:29:20,399 - sqlalchemy.engine.Engine - INFO - [generated in 0.00244s] (73,)
+2025-04-28 10:29:20,408 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id, event_registrations.event_id, event_registrations.user_id, event_registrations.registered_at 
+FROM event_registrations 
+WHERE event_registrations.event_id = $1::INTEGER AND event_registrations.user_id = $2::INTEGER
+2025-04-28 10:29:20,414 - sqlalchemy.engine.Engine - INFO - [generated in 0.00613s] (73, 1)
+2025-04-28 10:29:20,474 - sqlalchemy.engine.Engine - INFO - INSERT INTO event_registrations (event_id, user_id, registered_at) VALUES ($1::INTEGER, $2::INTEGER, $3::TIMESTAMP WITHOUT TIME ZONE) RETURNING event_registrations.id
+2025-04-28 10:29:20,477 - sqlalchemy.engine.Engine - INFO - [generated in 0.00266s] (73, 1, datetime.datetime(2025, 4, 28, 10, 29, 20, 420056))
+2025-04-28 10:29:20,481 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:29:20,505 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:29:20,509 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id, event_registrations.event_id, event_registrations.user_id, event_registrations.registered_at 
+FROM event_registrations 
+WHERE event_registrations.id = $1::INTEGER
+2025-04-28 10:29:20,511 - sqlalchemy.engine.Engine - INFO - [generated in 0.00241s] (107,)
+2025-04-28 10:29:20,517 - app.services.participants - INFO - User 1 registered for event 73
+2025-04-28 10:29:20,519 - app - INFO - Пользователь с ID 1 успешно зарегистрирован для события 73
+2025-04-28 10:29:20,522 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:29:46,306 - app - INFO - Запрос на получение участников для события 73
+2025-04-28 10:29:46,309 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:29:46,312 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id, event_registrations.event_id, event_registrations.user_id, event_registrations.registered_at 
+FROM event_registrations 
+WHERE event_registrations.event_id = $1::INTEGER
+2025-04-28 10:29:46,313 - sqlalchemy.engine.Engine - INFO - [generated in 0.00187s] (73,)
+2025-04-28 10:29:46,318 - app.services.participants - INFO - Fetched participants for event 73
+2025-04-28 10:29:46,319 - app - INFO - Найдено 1 участников для события 73
+2025-04-28 10:29:46,322 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:30:10,909 - httpx - INFO - HTTP Request: GET http://mock_auth:8080/check_session "HTTP/1.1 200 OK"
+2025-04-28 10:30:10,913 - app - INFO - Запрос на удаление пользователя с ID 1 из события 73
+2025-04-28 10:30:10,915 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:30:10,920 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id, event_registrations.event_id, event_registrations.user_id, event_registrations.registered_at 
+FROM event_registrations 
+WHERE event_registrations.event_id = $1::INTEGER AND event_registrations.user_id = $2::INTEGER
+2025-04-28 10:30:10,922 - sqlalchemy.engine.Engine - INFO - [cached since 50.52s ago] (73, 1)
+2025-04-28 10:30:10,927 - sqlalchemy.engine.Engine - INFO - DELETE FROM event_registrations WHERE event_registrations.id = $1::INTEGER
+2025-04-28 10:30:10,929 - sqlalchemy.engine.Engine - INFO - [generated in 0.00224s] (107,)
+2025-04-28 10:30:10,933 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:30:10,973 - app.services.participants - INFO - User 1 removed from event 73
+2025-04-28 10:30:10,975 - app - INFO - Пользователь с ID 1 успешно удалён из события 73
+2025-04-28 10:34:30,039 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-04-28 10:34:30,041 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:34:30,046 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-04-28 10:34:30,048 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:34:30,051 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-04-28 10:34:30,053 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:34:30,057 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:34:30,066 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:34:30,068 - sqlalchemy.engine.Engine - INFO - [generated in 0.00204s] ('events', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:34:30,075 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:34:30,077 - sqlalchemy.engine.Engine - INFO - [cached since 0.01057s ago] ('event_registrations', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:34:30,080 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:34:30,082 - sqlalchemy.engine.Engine - INFO - [cached since 0.01545s ago] ('participants', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:34:30,084 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:34:48,946 - app - INFO - Запрос на получение события с ID: 73
+2025-04-28 10:34:48,948 - app - INFO - Запрос события с ID 73
+2025-04-28 10:34:48,951 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:34:48,968 - sqlalchemy.engine.Engine - INFO - SELECT events.id, events.title, events.description, events.location, events.is_online, events.start_time, events.end_time, events.created_at 
+FROM events 
+WHERE events.id = $1::INTEGER
+2025-04-28 10:34:48,971 - sqlalchemy.engine.Engine - INFO - [generated in 0.00292s] (73,)
+2025-04-28 10:34:48,980 - app - INFO - Событие с ID 73 найдено
+2025-04-28 10:34:48,983 - app - INFO - Событие с ID 73 найдено: <app.models.event.Event object at 0x7f204a2ffed0>
+2025-04-28 10:34:48,987 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:42:03,808 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-04-28 10:42:03,815 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:42:03,826 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-04-28 10:42:03,831 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:42:03,845 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-04-28 10:42:03,849 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:42:03,866 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:42:03,887 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:42:03,891 - sqlalchemy.engine.Engine - INFO - [generated in 0.00431s] ('events', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:42:03,905 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:42:03,909 - sqlalchemy.engine.Engine - INFO - [cached since 0.02211s ago] ('event_registrations', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:42:03,915 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:42:03,919 - sqlalchemy.engine.Engine - INFO - [cached since 0.0327s ago] ('participants', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:42:03,932 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:42:03,937 - app - INFO - Подключаемся к RabbitMQ по адресу amqp://guest:guest@rabbitmq:5672/...
+2025-04-28 10:42:03,964 - app - INFO - Успешное подключение к RabbitMQ и создание очередей.
+2025-04-28 10:48:39,785 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-04-28 10:48:39,787 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:48:39,792 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-04-28 10:48:39,794 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:48:39,798 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-04-28 10:48:39,799 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:48:39,803 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:48:39,812 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:48:39,814 - sqlalchemy.engine.Engine - INFO - [generated in 0.00206s] ('events', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:48:39,827 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:48:39,829 - sqlalchemy.engine.Engine - INFO - [cached since 0.01716s ago] ('event_registrations', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:48:39,832 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:48:39,834 - sqlalchemy.engine.Engine - INFO - [cached since 0.02209s ago] ('participants', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:48:39,837 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:48:39,839 - app - INFO - Подключаемся к RabbitMQ по адресу amqp://guest:guest@rabbitmq:5672/...
+2025-04-28 10:48:39,856 - app - INFO - Успешное подключение к RabbitMQ и создание очередей.
+2025-04-28 10:49:43,452 - app - INFO - Запрос на создание события: title='ZXCZXC' description='ASDASD' location='Ru' is_online=False start_time=datetime.datetime(2025, 4, 28, 10, 49, 43, 452384) end_time=datetime.datetime(2025, 4, 28, 11, 49, 43, 452388)
+2025-04-28 10:49:43,454 - app - INFO - Создание нового события с данными: title='ZXCZXC' description='ASDASD' location='Ru' is_online=False start_time=datetime.datetime(2025, 4, 28, 10, 49, 43, 452384) end_time=datetime.datetime(2025, 4, 28, 11, 49, 43, 452388)
+2025-04-28 10:49:43,468 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:49:43,475 - sqlalchemy.engine.Engine - INFO - INSERT INTO events (title, description, location, is_online, start_time, end_time, created_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::BOOLEAN, $5::TIMESTAMP WITHOUT TIME ZONE, $6::TIMESTAMP WITHOUT TIME ZONE, $7::TIMESTAMP WITHOUT TIME ZONE) RETURNING events.id
+2025-04-28 10:49:43,478 - sqlalchemy.engine.Engine - INFO - [generated in 0.00297s] ('ZXCZXC', 'ASDASD', 'Ru', False, datetime.datetime(2025, 4, 28, 10, 49, 43, 452384), datetime.datetime(2025, 4, 28, 11, 49, 43, 452388), datetime.datetime(2025, 4, 28, 10, 49, 43, 475706))
+2025-04-28 10:49:43,484 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:49:43,515 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:49:43,522 - sqlalchemy.engine.Engine - INFO - SELECT events.id, events.title, events.description, events.location, events.is_online, events.start_time, events.end_time, events.created_at 
+FROM events 
+WHERE events.id = $1::INTEGER
+2025-04-28 10:49:43,525 - sqlalchemy.engine.Engine - INFO - [generated in 0.00325s] (74,)
+2025-04-28 10:49:43,530 - app - INFO - Отправка события 'event' в очередь 'event_updates' с action: event_created, event_id: 74
+2025-04-28 10:49:43,533 - app - INFO - Отправка сообщения в очередь 'event_updates' с данными: {'action': 'event_created', 'event_id': 74}
+2025-04-28 10:49:43,537 - app - INFO - Сообщение успешно отправлено в очередь 'event_updates'.
+2025-04-28 10:49:43,539 - app - INFO - Событие 'event' успешно отправлено в очередь 'event_updates'.
+2025-04-28 10:49:43,542 - app - INFO - Событие с ID 74 успешно создано
+2025-04-28 10:49:43,544 - app - INFO - Событие успешно создано: <app.models.event.Event object at 0x7f5cda3d9f50>
+2025-04-28 10:49:43,547 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:55:46,553 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-04-28 10:55:46,555 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:55:46,562 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-04-28 10:55:46,564 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:55:46,568 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-04-28 10:55:46,571 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:55:46,576 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:55:46,588 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:55:46,590 - sqlalchemy.engine.Engine - INFO - [generated in 0.00235s] ('events', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:55:46,597 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:55:46,599 - sqlalchemy.engine.Engine - INFO - [cached since 0.01152s ago] ('event_registrations', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:55:46,603 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:55:46,605 - sqlalchemy.engine.Engine - INFO - [cached since 0.01799s ago] ('participants', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:55:46,609 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:55:46,611 - app - INFO - Подключаемся к RabbitMQ по адресу amqp://guest:guest@rabbitmq:5672/...
+2025-04-28 10:55:46,627 - app - INFO - Успешное подключение к RabbitMQ и создание очередей.
+2025-04-28 10:57:51,324 - app - INFO - Запрос на получение события с ID: 73
+2025-04-28 10:57:51,326 - app - INFO - Запрос события с ID 73
+2025-04-28 10:57:51,330 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:57:51,353 - sqlalchemy.engine.Engine - INFO - SELECT events.id, events.title, events.description, events.location, events.is_online, events.start_time, events.end_time, events.created_at 
+FROM events 
+WHERE events.id = $1::INTEGER
+2025-04-28 10:57:51,357 - sqlalchemy.engine.Engine - INFO - [generated in 0.00360s] (73,)
+2025-04-28 10:57:51,363 - app - INFO - Событие с ID 73 найдено
+2025-04-28 10:57:51,367 - app - INFO - Событие с ID 73 найдено: <app.models.event.Event object at 0x7f6f5fea8450>
+2025-04-28 10:57:51,370 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:57:54,678 - app - INFO - Запрос на создание события: title='ZXCZXC' description='ASDASD' location='Ru' is_online=False start_time=datetime.datetime(2025, 4, 28, 10, 57, 54, 678261) end_time=datetime.datetime(2025, 4, 28, 11, 57, 54, 678267)
+2025-04-28 10:57:54,686 - app - INFO - Создание нового события с данными: title='ZXCZXC' description='ASDASD' location='Ru' is_online=False start_time=datetime.datetime(2025, 4, 28, 10, 57, 54, 678261) end_time=datetime.datetime(2025, 4, 28, 11, 57, 54, 678267)
+2025-04-28 10:57:54,691 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:57:54,697 - sqlalchemy.engine.Engine - INFO - INSERT INTO events (title, description, location, is_online, start_time, end_time, created_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::BOOLEAN, $5::TIMESTAMP WITHOUT TIME ZONE, $6::TIMESTAMP WITHOUT TIME ZONE, $7::TIMESTAMP WITHOUT TIME ZONE) RETURNING events.id
+2025-04-28 10:57:54,701 - sqlalchemy.engine.Engine - INFO - [generated in 0.00445s] ('ZXCZXC', 'ASDASD', 'Ru', False, datetime.datetime(2025, 4, 28, 10, 57, 54, 678261), datetime.datetime(2025, 4, 28, 11, 57, 54, 678267), datetime.datetime(2025, 4, 28, 10, 57, 54, 696861))
+2025-04-28 10:57:54,708 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:57:54,736 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:57:54,745 - sqlalchemy.engine.Engine - INFO - SELECT events.id, events.title, events.description, events.location, events.is_online, events.start_time, events.end_time, events.created_at 
+FROM events 
+WHERE events.id = $1::INTEGER
+2025-04-28 10:57:54,752 - sqlalchemy.engine.Engine - INFO - [generated in 0.00751s] (107,)
+2025-04-28 10:57:54,757 - app - INFO - Отправка события 'event' в очередь 'event_updates' с action: event_created, event_id: 107
+2025-04-28 10:57:54,767 - app - INFO - Отправка сообщения в очередь 'event_updates' с данными: {'action': 'event_created', 'event_id': 107}
+2025-04-28 10:57:54,780 - app - INFO - Сообщение успешно отправлено в очередь 'event_updates'.
+2025-04-28 10:57:54,785 - app - INFO - Событие 'event' успешно отправлено в очередь 'event_updates'.
+2025-04-28 10:57:54,790 - app - INFO - Событие с ID 107 успешно создано
+2025-04-28 10:57:54,792 - app - INFO - Событие успешно создано: <app.models.event.Event object at 0x7f6f6206c110>
+2025-04-28 10:57:54,796 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:58:02,862 - httpx - INFO - HTTP Request: GET http://mock_auth:8080/check_session "HTTP/1.1 200 OK"
+2025-04-28 10:58:02,867 - app - INFO - Запрос на регистрацию пользователя с ID 1 для события 107
+2025-04-28 10:58:02,870 - app - INFO - Попытка зарегистрировать пользователя с ID 1 на событие 107
+2025-04-28 10:58:02,873 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:58:02,877 - sqlalchemy.engine.Engine - INFO - SELECT events.id AS events_id, events.title AS events_title, events.description AS events_description, events.location AS events_location, events.is_online AS events_is_online, events.start_time AS events_start_time, events.end_time AS events_end_time, events.created_at AS events_created_at 
+FROM events 
+WHERE events.id = $1::INTEGER
+2025-04-28 10:58:02,879 - sqlalchemy.engine.Engine - INFO - [generated in 0.00232s] (107,)
+2025-04-28 10:58:02,892 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id, event_registrations.event_id, event_registrations.user_id, event_registrations.registered_at 
+FROM event_registrations 
+WHERE event_registrations.event_id = $1::INTEGER AND event_registrations.user_id = $2::INTEGER
+2025-04-28 10:58:02,896 - sqlalchemy.engine.Engine - INFO - [generated in 0.00468s] (107, 1)
+2025-04-28 10:58:02,906 - sqlalchemy.engine.Engine - INFO - INSERT INTO event_registrations (event_id, user_id, registered_at) VALUES ($1::INTEGER, $2::INTEGER, $3::TIMESTAMP WITHOUT TIME ZONE) RETURNING event_registrations.id
+2025-04-28 10:58:02,911 - sqlalchemy.engine.Engine - INFO - [generated in 0.00480s] (107, 1, datetime.datetime(2025, 4, 28, 10, 58, 2, 903157))
+2025-04-28 10:58:02,919 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:58:02,952 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:58:02,960 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id, event_registrations.event_id, event_registrations.user_id, event_registrations.registered_at 
+FROM event_registrations 
+WHERE event_registrations.id = $1::INTEGER
+2025-04-28 10:58:02,963 - sqlalchemy.engine.Engine - INFO - [generated in 0.00387s] (108,)
+2025-04-28 10:58:02,968 - app - INFO - Пользователь с ID 1 успешно зарегистрирован на событие 107
+2025-04-28 10:58:02,971 - app - INFO - Отправка события 'participant' в очередь 'event_participants' с action: user_registered, event_id: 107, user_id: 1
+2025-04-28 10:58:02,974 - app - INFO - Отправка сообщения в очередь 'event_participants' с данными: {'action': 'user_registered', 'event_id': 107, 'user_id': 1}
+2025-04-28 10:58:02,978 - app - INFO - Сообщение успешно отправлено в очередь 'event_participants'.
+2025-04-28 10:58:02,981 - app - INFO - Событие 'participant' успешно отправлено в очередь 'event_participants'.
+2025-04-28 10:58:02,983 - app.services.participants - INFO - User 1 registered for event 107
+2025-04-28 10:58:02,986 - app - INFO - Пользователь с ID 1 успешно зарегистрирован для события 107
+2025-04-28 10:58:02,988 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:58:31,677 - app - INFO - Запрос на получение участников для события 107
+2025-04-28 10:58:31,682 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:58:31,686 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id, event_registrations.event_id, event_registrations.user_id, event_registrations.registered_at 
+FROM event_registrations 
+WHERE event_registrations.event_id = $1::INTEGER
+2025-04-28 10:58:31,697 - sqlalchemy.engine.Engine - INFO - [generated in 0.01046s] (107,)
+2025-04-28 10:58:31,704 - app.services.participants - INFO - Fetched participants for event 107
+2025-04-28 10:58:31,708 - app - INFO - Найдено 1 участников для события 107
+2025-04-28 10:58:31,713 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-04-28 10:58:38,182 - httpx - INFO - HTTP Request: GET http://mock_auth:8080/check_session "HTTP/1.1 200 OK"
+2025-04-28 10:58:38,185 - app - INFO - Запрос на удаление пользователя с ID 1 из события 107
+2025-04-28 10:58:38,190 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:58:38,195 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id, event_registrations.event_id, event_registrations.user_id, event_registrations.registered_at 
+FROM event_registrations 
+WHERE event_registrations.event_id = $1::INTEGER AND event_registrations.user_id = $2::INTEGER
+2025-04-28 10:58:38,198 - sqlalchemy.engine.Engine - INFO - [cached since 35.31s ago] (107, 1)
+2025-04-28 10:58:38,204 - sqlalchemy.engine.Engine - INFO - DELETE FROM event_registrations WHERE event_registrations.id = $1::INTEGER
+2025-04-28 10:58:38,207 - sqlalchemy.engine.Engine - INFO - [generated in 0.00331s] (108,)
+2025-04-28 10:58:38,212 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:58:38,242 - app - INFO - Отправка события 'participant' в очередь 'event_participants' с action: user_unregistered, event_id: 107, user_id: 1
+2025-04-28 10:58:38,244 - app - INFO - Отправка сообщения в очередь 'event_participants' с данными: {'action': 'user_unregistered', 'event_id': 107, 'user_id': 1}
+2025-04-28 10:58:38,249 - app - INFO - Сообщение успешно отправлено в очередь 'event_participants'.
+2025-04-28 10:58:38,252 - app - INFO - Событие 'participant' успешно отправлено в очередь 'event_participants'.
+2025-04-28 10:58:38,254 - app.services.participants - INFO - User 1 removed from event 107
+2025-04-28 10:58:38,257 - app - INFO - Пользователь с ID 1 успешно удалён из события 107
+2025-04-28 10:59:26,901 - app - INFO - Запрос на удаление события с ID: 107
+2025-04-28 10:59:26,905 - app - INFO - Попытка удалить событие с ID 107
+2025-04-28 10:59:26,911 - app - INFO - Запрос события с ID 107
+2025-04-28 10:59:26,917 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:59:26,925 - sqlalchemy.engine.Engine - INFO - SELECT events.id, events.title, events.description, events.location, events.is_online, events.start_time, events.end_time, events.created_at 
+FROM events 
+WHERE events.id = $1::INTEGER
+2025-04-28 10:59:26,931 - sqlalchemy.engine.Engine - INFO - [cached since 95.58s ago] (107,)
+2025-04-28 10:59:26,936 - app - INFO - Событие с ID 107 найдено
+2025-04-28 10:59:26,941 - sqlalchemy.engine.Engine - INFO - DELETE FROM event_registrations WHERE event_registrations.event_id = $1::INTEGER
+2025-04-28 10:59:26,944 - sqlalchemy.engine.Engine - INFO - [generated in 0.00341s] (107,)
+2025-04-28 10:59:26,953 - app - INFO - Удалены все регистрации для события с ID 107
+2025-04-28 10:59:26,959 - sqlalchemy.engine.Engine - INFO - SELECT event_registrations.id AS event_registrations_id, event_registrations.event_id AS event_registrations_event_id, event_registrations.user_id AS event_registrations_user_id, event_registrations.registered_at AS event_registrations_registered_at 
+FROM event_registrations 
+WHERE $1::INTEGER = event_registrations.event_id
+2025-04-28 10:59:26,961 - sqlalchemy.engine.Engine - INFO - [generated in 0.00246s] (107,)
+2025-04-28 10:59:26,967 - sqlalchemy.engine.Engine - INFO - DELETE FROM events WHERE events.id = $1::INTEGER
+2025-04-28 10:59:26,969 - sqlalchemy.engine.Engine - INFO - [generated in 0.00244s] (107,)
+2025-04-28 10:59:26,975 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:59:27,014 - app - INFO - Отправка события 'event' в очередь 'event_updates' с action: event_deleted, event_id: 107
+2025-04-28 10:59:27,017 - app - INFO - Отправка сообщения в очередь 'event_updates' с данными: {'action': 'event_deleted', 'event_id': 107}
+2025-04-28 10:59:27,022 - app - INFO - Сообщение успешно отправлено в очередь 'event_updates'.
+2025-04-28 10:59:27,024 - app - INFO - Событие 'event' успешно отправлено в очередь 'event_updates'.
+2025-04-28 10:59:27,026 - app - INFO - Событие с ID 107 успешно удалено
+2025-04-28 10:59:27,029 - app - INFO - Событие с ID 107 успешно удалено

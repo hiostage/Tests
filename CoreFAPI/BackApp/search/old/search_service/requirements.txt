@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pika
+aio_pika
+elasticsearch
+asyncpg
+aiormq
+aiohttp

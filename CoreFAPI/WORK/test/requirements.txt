@@ -1,0 +1,7 @@
+pydantic
+fastapi
+uvicorn[standard]
+sqlalchemy
+alembic
+asyncpg
+psycopg2-binary>=2.9.6

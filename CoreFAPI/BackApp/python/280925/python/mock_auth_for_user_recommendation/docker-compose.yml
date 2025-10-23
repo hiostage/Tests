@@ -1,0 +1,19 @@
+services:
+  mock_auth:
+    build: .
+    ports:
+      - "8010:8010"
+    networks:  
+      - backend
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s  # Даем время на запуск сервиса
+    restart: unless-stopped 
+
+
+networks:
+  backend:
+    external: true

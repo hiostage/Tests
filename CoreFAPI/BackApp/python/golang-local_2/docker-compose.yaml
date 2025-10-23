@@ -1,0 +1,63 @@
+services:
+  storage:
+      container_name: postgres
+      environment:
+        POSTGRES_USER: evans
+        POSTGRES_PASSWORD: evans
+      image: postgres:15-alpine
+      ports:
+        - 8012:8012
+      command:
+        - 'postgres'
+        - '-c'
+        - 'port=8012'
+      volumes:
+        - storage_vol:/var/lib/postgresql/data
+      networks:
+        - backend
+
+  redis:
+      container_name: redis
+      environment:
+        REDIS_PASSWORD: evans
+        REDIS_MAXMEMORY: 200mb
+        REDIS_HOST: localhost
+      image: redis:7.4.2-alpine
+      command: 
+        - '--port'
+        - '8011'
+        - '--requirepass'
+        - 'evans'
+        - '--maxmemory'
+        - '200mb'
+      ports:
+        - 8011:8011
+      volumes:
+        - redis_data:/data
+      networks:
+        - backend
+
+  regserv:
+      container_name: reg
+      build: .
+      depends_on:
+        - storage
+        - redis
+      networks:
+        - backend
+      ports:
+        - 8010:8010
+
+volumes: 
+  storage_vol: {}
+  redis_data: {}
+
+networks:
+  backend:
+    external: true
+
+
+# docker compose up --build -d
+
+
+

@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+sqlalchemy[asyncio]
+asyncpg
+pydantic
+httpx
+redis
+aiohttp
+python-dotenv
+fastapi-cache2
+pydantic_settings
+alembic
+aio-pika
+pytest
+pytest-asyncio
+pyyaml>=6.0

@@ -1,0 +1,11 @@
+pydantic
+sqlalchemy
+uvicorn
+fastapi
+alembic
+asyncpg
+pydantic[email]
+passlib[bcrypt]
+itsdangerous
+httpx
+redis[async]

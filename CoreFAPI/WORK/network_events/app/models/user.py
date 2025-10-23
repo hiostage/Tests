@@ -1,0 +1,68 @@
+from sqlalchemy import Column, String, DateTime, Boolean, update
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import relationship
+from app.models.base import Base
+from datetime import datetime, timedelta
+
+
+class User(Base):
+    __tablename__ = "users_cache"
+    
+    id = Column(String, primary_key=True, index=True)
+    username = Column(String(50), index=True)
+    first_name = Column(String(50))
+    last_name = Column(String(50))
+    email = Column(String(100), index=True)
+    is_active = Column(Boolean, default=True)
+    last_sync_at = Column(DateTime, default=lambda: datetime.utcnow())
+    # Связь с постами
+    posts = relationship(
+    "Post", 
+    back_populates="author", 
+    foreign_keys="[Post.author_id]",
+    lazy="selectin"
+    )
+
+    edited_posts = relationship(
+        "Post",
+        back_populates="editor",
+        foreign_keys="[Post.edited_by]",
+        lazy="selectin"
+    )
+    # Опциональные кешированные отношения
+    groups = relationship(
+        "Group", 
+        secondary="group_members", 
+        back_populates="members",
+        lazy="selectin"
+    )
+
+    created_groups = relationship(
+        "Group", 
+        back_populates="creator", 
+        lazy="selectin"
+    )
+
+    created_groups = relationship("Group", back_populates="creator", lazy="selectin")
+    
+    async def is_stale(self, ttl_minutes=60) -> bool:
+        """Проверяет, устарели ли данные пользователя"""
+        return (datetime.utcnow() - self.last_sync_at) > timedelta(minutes=ttl_minutes)
+
+    async def update_from_external(self, db: AsyncSession, external_data: dict):
+        """Обновление данных из внешнего сервиса"""
+        stmt = (
+            update(User)
+            .where(User.id == self.id)
+            .values(
+                uuid=external_data.get("uuid", self.uuid),
+                username=external_data.get("userName", self.username),
+                first_name=external_data.get("firstName", self.first_name),
+                last_name=external_data.get("lastName", self.last_name),
+                email=external_data.get("email", self.email),
+                is_active=True,  # если нужно — или external_data.get("is_active", True)
+                last_sync_at=datetime.utcnow()
+            )
+        )
+        await db.execute(stmt)
+        await db.commit()

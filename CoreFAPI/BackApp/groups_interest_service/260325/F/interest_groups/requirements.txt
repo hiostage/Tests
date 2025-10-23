@@ -1,0 +1,30 @@
+fastapi==0.95.2
+uvicorn==0.22.0
+sqlalchemy==2.0.15
+psycopg2-binary==2.9.6
+redis==4.5.5
+pydantic==1.10.7
+python-multipart==0.0.6
+passlib==1.7.4
+python-jose==3.3.0
+alembic==1.11.1
+aio-pika==9.0.7
+requests==2.31.0
+httpx==0.25.0
+aiormq>=6.7.0
+
+
+# Основные для логирования
+loguru==0.7.2  # Альтернативный удобный логгер
+python-json-logger==2.0.7  # Для JSON-формата логов
+structlog==23.1.0  # Структурированное логирование
+
+# Для ротации логов
+logging-rotating-file-handler==1.0.0
+
+# Для мониторинга (опционально)
+prometheus-client==0.17.1  # Метрики
+sentry-sdk==1.34.0  # Отправка ошибок в Sentry
+
+# Для FastAPI-интеграции
+fastapi-login==0.1.0  # Логирование аутентификации

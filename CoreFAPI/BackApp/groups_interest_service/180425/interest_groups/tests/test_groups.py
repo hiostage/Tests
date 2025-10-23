@@ -1,0 +1,205 @@
+import pytest, pytest_asyncio
+from httpx import AsyncClient  # Используем AsyncClient для асинхронных тестов
+from fastapi import status
+from app.main import app
+from unittest.mock import patch, AsyncMock
+from app.db.session import get_db
+from app.services.group import GroupService
+from app.services.user import UserService
+from app.models.user import User
+from app.schemas.group import GroupWithMembers
+from app.schemas.user import UserCache, UserPublic
+from app.models.group import Group
+from datetime import datetime
+
+@pytest.mark.asyncio
+async def test_create_group(auth_client: AsyncClient):
+    mock_group = Group(
+        id=1,
+        name="Test Group",
+        description="Test description",
+        category="technology",
+        is_public=True,
+        creator_id=1
+    )
+
+    mock_user = UserCache(
+        id=1,
+        username="Test User",
+        email="test@example.com",
+        is_active=True,
+        created_at=datetime.utcnow(),
+        updated_at=datetime.utcnow(),
+        last_updated=datetime.utcnow(),
+        permissions=["groups.write"]
+    )
+    
+    with patch("app.services.group.GroupService.create_group", new_callable=AsyncMock) as mock_create, \
+         patch("app.services.user.UserService.get_user_by_id", new_callable=AsyncMock) as mock_get_user, \
+         patch("app.schemas.group.GroupWithMembers.from_orm") as mock_from_orm:
+        
+        mock_create.return_value = mock_group
+        mock_get_user.return_value = mock_user
+        mock_from_orm.return_value = GroupWithMembers(
+            id=1,
+            name="Test Group",
+            description="Test description",
+            category="technology",
+            slug="test-group",
+            created_at=datetime.utcnow(),
+            updated_at=datetime.utcnow(),
+            creator_id=1,
+            is_public=True,
+            banner_url=None,
+            rules=None,
+            tags=[],
+            member_count=1,
+            creator=UserPublic(
+                id=1,
+                username="Test User",
+                email="test@example.com",
+                is_active=True,
+                created_at=datetime.utcnow(),
+                updated_at=datetime.utcnow(),
+            ),
+            members=[],
+            is_member=True
+        )
+
+        response = await auth_client.post(
+            "/api/v1/groups/",
+            json={
+                "name": "Test Group",
+                "category": "technology",
+                "description": "Test description",
+                "is_public": True
+            }
+        )
+
+        assert response.status_code == 201
+        assert response.json()["id"] == 1
+        assert response.json()["name"] == "Test Group"
+
+@pytest.mark.asyncio
+async def test_unauthorized_access(client: AsyncClient):
+    response = await client.get("/api/v1/groups/")
+    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+
+
+@pytest.mark.asyncio
+async def test_get_groups(auth_client: AsyncClient):
+    with patch("app.services.group.GroupService.get_groups",
+              new_callable=AsyncMock) as mock_service:
+        mock_service.return_value = []
+        
+        response = await auth_client.get("/api/v1/groups/")
+        assert response.status_code == status.HTTP_200_OK
+
+@pytest.mark.asyncio
+async def test_add_member_to_group(auth_client: AsyncClient):
+    # 1. Подготовка данных
+    creator_id = 1
+    member_id = 2
+    current_user_id = 1
+
+    mock_creator = User(
+        id=creator_id,
+        username="creator",
+        email="creator@example.com",
+        is_active=True,
+        last_sync_at=datetime.utcnow()
+    )
+
+    mock_member = User(
+        id=member_id,
+        username="member",
+        email="member@example.com",
+        is_active=True,
+        last_sync_at=datetime.utcnow()
+    )
+
+    mock_group = Group(
+        id=1,
+        name="Test Group",
+        category="technology",
+        description="Some description",
+        is_public=True,
+        creator_id=creator_id,
+        created_at=datetime.utcnow(),
+        updated_at=datetime.utcnow(),
+        slug="test-group",
+        banner_url=None,
+        rules=None,
+        tags=[],
+        member_count=2,  # Обновляем количество участников
+        creator=mock_creator,
+        members=[mock_creator, mock_member]  # Добавляем членов группы
+    )
+
+    # 2. Настройка моков
+    with (
+        patch("app.services.user.UserService.sync_user", AsyncMock()),
+        patch("app.services.group.GroupService.get_group", AsyncMock(return_value=mock_group)),
+        patch("app.services.group.GroupService.add_member_to_group", AsyncMock(return_value=mock_group)),
+        patch("app.utils.auth.get_current_user", AsyncMock(return_value={"id": current_user_id}))
+    ):
+        response = await auth_client.post(
+            f"/api/v1/groups/{mock_group.id}/members/{member_id}",
+            headers={"Content-Type": "application/json"}
+        )
+
+        assert response.status_code == 200
+        data = response.json()
+        assert data["id"] == mock_group.id
+        assert any(m["id"] == member_id for m in data["members"])
+
+@pytest.mark.asyncio
+async def test_update_group(auth_client: AsyncClient):
+    # Создаем группу
+    group_resp = await auth_client.post("/api/v1/groups/", json={"name": "Test", "category": "technology"})
+    group_id = group_resp.json()["id"]
+    
+    # Обновляем
+    response = await auth_client.put(
+        f"/api/v1/groups/{group_id}",
+        json={"name": "Updated", "category": "technology"}
+    )
+    assert response.status_code == status.HTTP_200_OK
+
+@pytest.mark.asyncio
+async def test_delete_group(auth_client: AsyncClient):
+    # Создаем группу
+    group_resp = await auth_client.post("/api/v1/groups/", json={"name": "Test", "category": "technology"})
+    group_id = group_resp.json()["id"]
+    
+    # Удаляем
+    response = await auth_client.delete(f"/api/v1/groups/{group_id}")
+    assert response.status_code == status.HTTP_204_NO_CONTENT
+
+@pytest.mark.asyncio
+async def test_create_group_no_permissions(client: AsyncClient):
+    mock_user_no_perms = {
+        "user_id": 1,
+        "username": "nopermsuser",
+        "email": "noperms@test.com",
+        "is_active": True,
+        "permissions": []
+    }
+    
+    with patch("app.api.groups.get_current_user", return_value=mock_user_no_perms):
+        response = await client.post("/api/v1/groups/", json={"name": "Test", "category": "technology"})
+        assert response.status_code == status.HTTP_403_FORBIDDEN
+
+
+@pytest.mark.asyncio
+async def test_logout(auth_client: AsyncClient):
+    # Проверяем доступ
+    response = await auth_client.get("/api/v1/groups/")
+    assert response.status_code == status.HTTP_200_OK
+    
+    # Выходим
+    await auth_client.post("/api/v1/logout")
+    
+    # Проверяем снова
+    response = await auth_client.get("/api/v1/groups/")
+    assert response.status_code == status.HTTP_401_UNAUTHORIZED

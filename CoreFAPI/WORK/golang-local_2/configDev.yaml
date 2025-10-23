@@ -1,0 +1,30 @@
+env: "prod"
+is_file_log_output: false
+storage_path: postgres://registr:registr@192.168.1.114:5432/registr?sslmode=disable
+
+postgres:
+  host: 192.168.1.114
+  port: 5432
+  user: registr
+  password: registr
+  name: registr
+  use_ssl: disable
+
+http_server:
+  host: 0.0.0.0
+  port: 8010
+  read_header_timeout: 5s
+  read_timeout: 5s
+  write_timeout: 10s
+  idle_timeout: 60s
+  allowed_domains_cors:
+    - "http://localhost:8010"
+    - "http://192.168.1.200:8010"
+
+redis:
+  host: 192.168.1.118
+  port: 6379
+  password: redis
+  ttl: 20m
+  db_number: 0
+  maxmemory: 200mb

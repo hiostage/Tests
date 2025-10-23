@@ -1,0 +1,32 @@
+2025-04-28 10:01:55,876 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-04-28 10:01:55,878 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:01:55,883 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-04-28 10:01:55,885 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:01:55,889 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-04-28 10:01:55,891 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-04-28 10:01:55,895 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:01:55,903 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:01:55,906 - sqlalchemy.engine.Engine - INFO - [generated in 0.00267s] ('events', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:01:55,912 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:01:55,914 - sqlalchemy.engine.Engine - INFO - [cached since 0.01073s ago] ('event_registrations', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:01:55,917 - sqlalchemy.engine.Engine - INFO - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2025-04-28 10:01:55,918 - sqlalchemy.engine.Engine - INFO - [cached since 0.01534s ago] ('participants', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2025-04-28 10:01:55,921 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:02:21,031 - app - INFO - Запрос на создание события: title='ZXCZXC' description='ASDASD' location='Ru' is_online=False start_time=datetime.datetime(2025, 4, 28, 10, 2, 21, 30827) end_time=datetime.datetime(2025, 4, 28, 11, 2, 21, 30833)
+2025-04-28 10:02:21,053 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:02:21,059 - sqlalchemy.engine.Engine - INFO - INSERT INTO events (title, description, location, is_online, start_time, end_time, created_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::BOOLEAN, $5::TIMESTAMP WITHOUT TIME ZONE, $6::TIMESTAMP WITHOUT TIME ZONE, $7::TIMESTAMP WITHOUT TIME ZONE) RETURNING events.id
+2025-04-28 10:02:21,062 - sqlalchemy.engine.Engine - INFO - [generated in 0.00266s] ('ZXCZXC', 'ASDASD', 'Ru', False, datetime.datetime(2025, 4, 28, 10, 2, 21, 30827), datetime.datetime(2025, 4, 28, 11, 2, 21, 30833), datetime.datetime(2025, 4, 28, 10, 2, 21, 59762))
+2025-04-28 10:02:21,070 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-04-28 10:02:21,085 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-04-28 10:02:21,092 - sqlalchemy.engine.Engine - INFO - SELECT events.id, events.title, events.description, events.location, events.is_online, events.start_time, events.end_time, events.created_at 
+FROM events 
+WHERE events.id = $1::INTEGER
+2025-04-28 10:02:21,095 - sqlalchemy.engine.Engine - INFO - [generated in 0.00357s] (40,)
+2025-04-28 10:02:21,105 - app - INFO - Событие успешно создано: <app.models.event.Event object at 0x7fcbcb4bdc90>
+2025-04-28 10:02:21,114 - sqlalchemy.engine.Engine - INFO - ROLLBACK

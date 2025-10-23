@@ -1,0 +1,74 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Env & IDE
+.env
+.venv/
+venv/
+*.env
+*.swp
+*.swo
+.idea/
+.vscode/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+*.pid
+docker-compose.override.yml
+docker-compose.yml
+
+# Logs
+logs/
+*.log
+
+# Migrations
+migrations/__pycache__/
+migrations/versions/*.pyc
+migrations/versions/*.pyo
+
+# Alembic
+alembic.ini.bak
+alembic.ini~
+
+# Tests
+.coverage
+.tox/
+htmlcov/
+.cache/
+pytest_cache/
+
+# Redis dumps
+dump.rdb
+*.rdb
+
+# MyPy, Pylint, etc.
+.mypy_cache/
+.pytest_cache/
+.pytype/
+.pylint.d/
+
+# Compiled files
+*.sqlite3
+*.db
+*.sqlite
+*.out
+
+# Other
+*.bak
+*.orig
+*.rej
+
+# VS Code settings backup (optional)
+.code-workspace

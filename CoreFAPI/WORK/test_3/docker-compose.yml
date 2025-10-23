@@ -1,0 +1,27 @@
+
+
+services:
+  value_app:
+    build: .
+    ports:
+      - "8001:8000"
+    networks:
+      - test_back
+    volumes:
+      - ./:/app
+
+  value_db:
+    image: postgres:15
+    container_name: value_db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=value_db
+    ports:
+      - "5433:5432"
+    networks:
+      - test_back
+
+networks:
+  test_back:
+    external: true

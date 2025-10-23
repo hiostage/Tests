@@ -1,0 +1,58 @@
+networks:
+  backend:
+    external: true
+
+services:
+  search_service:
+    image: search_service:latest
+    build: .
+    container_name: search_service
+    depends_on:
+      - rabbitmq
+      - elasticsearch
+    networks:
+      - backend
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+      - ELASTICSEARCH_HOST=elasticsearch
+    restart: always
+
+  search_consumer:
+    build: .
+    container_name: search_consumer
+    depends_on:
+      - rabbitmq
+      - elasticsearch
+    networks:
+      - backend
+    environment:
+      - RABBITMQ_HOST=rabbitmq  # Добавляем переменную
+    command: ["python", "app/services/consumer.py"]
+    restart: always
+
+
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    networks:
+      - backend
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
+    restart: always
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.5.3
+    container_name: elasticsearch
+    networks:
+      - backend
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+    restart: always

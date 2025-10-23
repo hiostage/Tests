@@ -1,0 +1,53 @@
+pipeline {
+    agent {
+        label 'scanner' // Указываем конкретного агента с меткой 'scanner'
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5')) // Хранить только последние 5 сборок
+    }
+
+    triggers {
+        pollSCM('H 9 * * *') // Проверять репозиторий на изменения каждый день в 9 утра
+    }
+
+    environment {
+        // Укажите путь к SonarQube Scanner
+        SONAR_SCANNER_HOME = tool name: 'SonarQubeScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    // Клонирование репозитория из Gitea с использованием учетных данных
+                    git credentialsId: 'gitea-arthur', url: 'http://192.168.1.101:3000/YouTeam/python.git', branch: 'dev'
+                }
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    // Запуск анализа SonarQube
+                    withSonarQubeEnv('SonarQube') { // Убедитесь, что имя совпадает с настройками в Jenkins
+                        sh """
+                            ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
+                            -Dsonar.projectKey=YouTeam:python \
+                            -Dsonar.projectName=python \
+                            -Dsonar.sources=. \
+                            -Dsonar.host.url=http://192.168.1.121:9000 \
+                            -Dsonar.login=squ_c6d6dd9268dc8bbe8ddcfa4fe50939f05d6ed86b
+                        """
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'SonarQube scan completed.'
+        }
+    }
+}

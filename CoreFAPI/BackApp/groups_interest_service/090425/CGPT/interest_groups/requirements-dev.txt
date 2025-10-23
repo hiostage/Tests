@@ -1,0 +1,8 @@
+-r requirements-base.txt
+fastapi-cache2>=0.2.0
+redis[async]>=4.5.5
+asyncpg>=0.27.0
+aio-pika>=9.0.7
+pytest>=7.3.0
+pytest-asyncio>=0.21.0
+debugpy>=1.6.0

@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+.env
+*.sqlite3
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Env
+*.env.*
+.env.*
+
+# Logs
+*.log
+
+# Testing
+htmlcov/
+.tox/
+.pytest_cache/
+.coverage
+coverage.xml
+nosetests.xml
+test-results/
+
+# MyPy
+.mypy_cache/
+
+# Docker
+*.pid
+*.seed
+*.bak
+docker-compose.override.yml
+
+# Pycharm
+.idea/
+
+# Redis dump
+dump.rdb

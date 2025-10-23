@@ -1,0 +1,237 @@
+from sqlalchemy.ext.asyncio import AsyncSession
+from fastapi import HTTPException, Request, status
+from typing import Optional, List, Dict
+import httpx
+from app.models.user import User
+from app.schemas.user import UserBase, UserInDB
+from app.core.config import settings
+from app.utils.logger import logger
+from app.utils.cache import cache
+from datetime import datetime, timedelta
+from sqlalchemy.future import select
+from sqlalchemy import insert
+from sqlalchemy.exc import IntegrityError
+from uuid import UUID
+
+class UserService:
+    @staticmethod
+    async def get_current_user_from_session(request: Request) -> Optional[UserInDB]:
+        """
+        Получает текущего пользователя из сессии через auth-proxy
+        Args:
+            request: FastAPI Request объект для доступа к cookies
+        Returns:
+            UserInDB если сессия валидна, иначе None
+        """
+        session_id = request.cookies.get("sessionId")
+        if not session_id:
+            logger.debug("No sessionId in cookies")
+            return None
+
+        try:
+            async with httpx.AsyncClient(timeout=settings.REQUEST_TIMEOUT) as client:
+                response = await client.get(
+                    f"{settings.AUTH_PROXY_URL}user",
+                    cookies={"sessionId": session_id},
+                )
+
+                # Логируем полученный статус и содержимое ответа
+                logger.debug(f"Auth service response: {response.status_code} - {response.text}")
+
+                if response.status_code == 200:
+                    user_data = response.json()
+
+                    if "uuid" in user_data and user_data["uuid"]:
+                        logger.debug(f"Authenticated user: {user_data['uuid']}")
+
+                        # Дополнительная проверка на поля
+                        if "userName" not in user_data or not user_data["userName"]:
+                            logger.warning("UserName missing in response from auth service")
+                            return None
+
+                        return UserInDB(
+                            id=str(UUID(user_data["uuid"])),
+                            first_name=user_data["firstName"],
+                            last_name=user_data["lastName"],
+                            username=user_data["userName"],
+                            email=user_data["email"],
+                            phone=user_data.get("phone"),
+                            roles=user_data.get("roles")  # может быть None или список
+                        )
+                    else:
+                        logger.warning(f"Invalid user data from auth service: {user_data}")
+                else:
+                    logger.warning(f"Invalid session: {response.status_code} - {response.text}")
+
+        except httpx.TimeoutException:
+            logger.error("Auth service timeout")
+        except httpx.RequestError as e:
+            logger.error(f"Request error while contacting auth service: {str(e)}")
+        except Exception as e:
+            logger.error(f"Unexpected error: {str(e)}")
+
+        return None
+
+
+    @staticmethod
+    @cache.cached(ttl=timedelta(minutes=5), key_prefix="user_data")
+    async def get_current_user(request: Request):
+        """Получаем текущего пользователя из сессии"""
+        session_id = request.cookies.get("sessionId")
+        if not session_id:
+            raise HTTPException(status_code=401, detail="Session required")
+        
+        try:
+            async with httpx.AsyncClient() as client:
+                response = await client.get(
+                    f"{settings.AUTH_PROXY_URL}user",  # Путь с сессией
+                    cookies={"sessionId": session_id},  # Передаем session_id в cookies
+                    timeout=5.0
+                )
+                if response.status_code != 200:
+                    raise HTTPException(status_code=401, detail="Invalid session")
+                return response.json()
+        except httpx.RequestError:
+            raise HTTPException(status_code=503, detail="Auth service unavailable")
+
+    @staticmethod
+    async def get_local_user(db: AsyncSession, user_id: str) -> Optional[User]:
+        """
+        Получает пользователя из локальной БД с проверкой актуальности
+        """
+        result = await db.execute(select(User).where(User.id == user_id))
+        user = result.scalars().first()
+        
+        if user:
+            if (datetime.utcnow() - user.updated_at) > timedelta(days=1):
+                await db.delete(user)
+                await db.commit()
+                logger.debug(f"User {user.id} removed from local database due to outdated data")
+                return None
+            logger.debug(f"User {user.id} retrieved from local database")
+        
+        return user
+
+    @staticmethod
+    async def cache_user_locally(db: AsyncSession, user_data: UserInDB) -> User:
+        """
+        Кеширует/обновляет данные пользователя в локальной БД
+        """
+        try:
+            user = await db.get(User, user_data.id)
+            if user:
+                for field, value in user_data.dict(exclude_unset=True).items():
+                    setattr(user, field, value)
+            else:
+                user = User(**user_data.dict())
+                db.add(user)
+            
+            user.updated_at = datetime.utcnow()
+            await db.commit()
+            await db.refresh(user)
+            logger.info(f"User {user_data.id} cached successfully.")
+            return user
+        except Exception as e:
+            await db.rollback()
+            logger.error(f"Failed to cache user: {str(e)}")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="User data caching failed"
+            )
+
+    @staticmethod
+    async def get_or_fetch_user(
+        db: AsyncSession, 
+        request: Request, 
+        user_id: Optional[str] = None
+    ) -> Optional[UserInDB]:
+        """
+        Основной метод для получения пользователя:
+        1. Пытается получить из сессии
+        2. Если не найдено - из локальной БД
+        3. Если не найдено - из внешнего сервиса
+        """
+        # Сначала пробуем получить из сессии
+        session_user = await UserService.get_current_user_from_session(request)
+        if session_user:
+            if user_id and session_user.id != user_id:
+                logger.warning(f"Session user {session_user.id} != requested {user_id}")
+                return None
+            return await UserService.cache_user_locally(db, session_user)
+        
+        # Fallback для случаев, когда запрашивают конкретного пользователя
+        if user_id:
+            local_user = await UserService.get_local_user(db, user_id)
+            if local_user:
+                return local_user
+                
+            external_user = await UserService.get_current_user_from_session(request)
+            if external_user:
+                return await UserService.cache_user_locally(db, external_user)
+        
+        return None
+    
+    @staticmethod
+    async def sync_user(db: AsyncSession, user_data: dict) -> User:
+        result = await db.execute(select(User).where(User.id == user_data.id))
+        user = result.scalar_one_or_none()
+
+        if not user:
+            stmt = insert(User).values(
+                id=str(UUID(user_data.id)),
+                first_name=user_data.first_name,
+                last_name=user_data.last_name,
+                username=user_data.username,
+                email=user_data.email,
+                is_active=user_data.is_active or True  # если есть в user_data
+            )
+            try:
+                await db.execute(stmt)
+                await db.commit()
+                logger.info(f"User {user_data.id} synchronized successfully")
+            except IntegrityError:
+                await db.rollback()
+                logger.warning(f"User {user_data.id} already exists, skipping insertion")
+            # Получим вновь созданного пользователя
+            result = await db.execute(select(User).where(User.id == user_data.id))
+            user = result.scalar_one()
+        else:
+            await user.update_from_external(db, user_data)
+            logger.info(f"User {user_data.id} updated successfully")
+            # Обновим пользователя из БД, чтобы получить актуальные данные
+            result = await db.execute(select(User).where(User.id == user_data.id))
+            user = result.scalar_one()
+
+        return user
+
+
+    @staticmethod
+    async def get_users_by_ids(
+        db: AsyncSession, 
+        user_ids: List[int]
+    ) -> Dict[int, User]:
+        """
+        Пакетное получение пользователей
+        """
+        result = await db.execute(select(User).where(User.id.in_(user_ids)))
+        users = {user.id: user for user in result.scalars().all()}
+        logger.debug(f"Retrieved {len(users)} users from database by IDs: {user_ids}")
+        return users
+
+    
+    @staticmethod
+    async def get_user_id_from_session(request: Request) -> Optional[int]:
+        user = await UserService.get_current_user_from_session(request)
+        if user:
+            logger.debug(f"User {user.id} retrieved from session")
+            return user.id
+        logger.warning("No user found in session")
+        return None
+    
+    @staticmethod
+    async def get_user_by_id(db: AsyncSession, user_id: str) -> User:
+        """
+        Получение пользователя по его ID.
+        """
+        result = await db.execute(select(User).where(User.id == user_id))
+        return result.scalar_one_or_none()  # Возвращаем первого найденного пользователя или None

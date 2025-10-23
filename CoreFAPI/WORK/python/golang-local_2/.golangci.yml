@@ -1,0 +1,42 @@
+linters:
+  enable:
+    - gofmt
+    - govet
+    - staticcheck
+    - unused
+    - gocyclo
+    - bodyclose
+    - misspell
+    - ineffassign
+    - perfsprint
+    - fatcontext
+    - errcheck
+    - noctx
+    - prealloc
+    - makezero
+    - asciicheck
+    - gocritic
+    - gosimple
+    - dupl
+    - goconst
+    - protogetter
+  disable:
+
+
+run:
+  concurrency: 4
+  tests: false
+
+output:
+  formats:
+    - format: colored-line-number  # colored-line-number   json   checkstyle(for CI/CD)
+      path: stdout
+  print-issued-lines: true
+  print-linter-name: true
+  show-stats: true
+
+
+
+# golangci-lint linters
+# golangci-lint cache clean
+# --verbose

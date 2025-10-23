@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    env_file:
+      - .env  # Локальный файл (переопределяется при деплое)
+    environment:
+      - MOCK_AUTH=True  # 🔥 Важно: включаем мок-аутентификацию
+      - DEFAULT_USER_ID=2  # ID пользователя, который будет "авторизован"
+      - USER_SERVICE_URL=https://user-service  # URL внешнего сервиса
+      - USER_SERVICE_TIMEOUT=3  # Таймаут в секундах
+      - DATABASE_URL=postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/app
+      - REDIS_URL=redis://${REDIS_HOST}:${REDIS_PORT}
+      - RABBITMQ_URL=amqp://guest:guest@${RABBITMQ_HOST}:${RABBITMQ_PORT}/
+    depends_on:
+      - db
+      - redis
+      - rabbitmq
+
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=interest_groups
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+volumes:
+  postgres_data:
+  redis_data:
+  rabbitmq_data:

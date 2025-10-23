@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  mock-auth-service:
+    build: .
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./private.pem:/app/private.pem
+      - ./public.pem:/app/public.pem
+    environment:
+      - AUTH_SERVICE_TOKEN=your_service_token
+      - ALLOWED_ORIGINS="[\"http://localhost:3000\"]"
+      - CORS_ALLOW_CREDENTIALS=False

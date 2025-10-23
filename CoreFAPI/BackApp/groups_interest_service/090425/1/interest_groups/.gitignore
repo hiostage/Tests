@@ -1,0 +1,68 @@
+# Environment files
+.env
+.env.local
+.env.*.local
+secrets.env
+
+# Docker
+docker-compose.override.yml
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Logs
+*.log
+logs/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Database
+*.sqlite3
+*.db
+
+# Minio local storage
+minio-data/
+
+# Redis dump
+dump.rdb
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+
+logs/

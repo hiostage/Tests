@@ -1,0 +1,118 @@
+variables:
+  DOCKER_REGISTRY: nexus.youteam.space:5000
+
+stages:
+  - sonarqube-check
+  - build
+  - push
+
+sonarqube-check:
+  stage: sonarqube-check
+  tags:
+    - docker
+  image: 
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  variables:
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+    GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+  script: 
+    - sonar-scanner -Dsonar.login="$SONAR_TOKEN"
+  allow_failure: true
+  only:
+    - dev
+
+.build_image:
+  stage: build
+  tags:
+    - docker
+  image: 
+    name: docker:24.0.6-dind
+  before_script:
+    - export "DOCKER_IMAGE_TAG=$(date +%Y.%m.%d)"  # Явно вычисляем дату
+    - echo "DOCKER_IMAGE_TAG=$DOCKER_IMAGE_TAG" > build.env
+  script:
+    - echo "Собираем докер образ..."
+    - docker build -t $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG ./$DIR_PATH
+  artifacts:
+    reports:
+      dotenv: build.env
+  rules:
+    - if: $CI_COMMIT_BRANCH == "dev"
+      when: manual
+    - when: never
+
+.push_to_nexus:
+  stage: push
+  tags:
+    - docker
+  image: 
+    name: docker:24.0.6-dind
+  before_script:
+    - echo "Логинимся в Nexus..."
+    - echo "$NEXUS_USER_PASS" | docker login -u "$NEXUS_USER_NAME" --password-stdin $DOCKER_REGISTRY || exit 1
+  script:
+    - echo "Пушим собранный докер образ в Nexus..."
+    - docker tag $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+    - docker push $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+    - docker tag $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:latest
+    - docker push $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:latest
+  # after_script:
+  #   - echo "Удаляем собранные докер образы"
+  #   - docker system prune -af
+  # artifacts:
+  #   when: always
+  rules:
+    - if: $CI_COMMIT_BRANCH == "dev"
+      when: on_success
+    - when: never
+
+news_feed_app:build:
+  extends: .build_image
+  variables:
+    DOCKER_IMAGE_NAME: "news_feed_app-dev"
+    DIR_PATH: news_feed_app
+
+news_feed_app:push:
+  extends: .push_to_nexus
+  needs:
+    - news_feed_app:build
+  variables:
+    DOCKER_IMAGE_NAME: "news_feed_app-dev"
+    DIR_PATH: news_feed_app
+
+interest_groups:build:
+  extends: .build_image
+  variables:
+    DOCKER_IMAGE_NAME: "interest_groups-dev"
+    DIR_PATH: interest_groups
+
+interest_groups:push:
+  extends: .push_to_nexus
+  needs:
+    - interest_groups:build
+  variables:
+    DOCKER_IMAGE_NAME: "interest_groups-dev"
+    DIR_PATH: interest_groups
+
+network_events:build:
+  extends: .build_image
+  variables:
+    DOCKER_IMAGE_NAME: "network_events-dev"
+    DIR_PATH: network_events
+
+network_events:push:
+  extends: .push_to_nexus
+  needs:
+    - network_events:build
+  variables:
+    DOCKER_IMAGE_NAME: "network_events-dev"
+    DIR_PATH: network_events
+
+after_script:
+  - echo "Удаляем собранные докер образы"
+  - docker system prune -af
