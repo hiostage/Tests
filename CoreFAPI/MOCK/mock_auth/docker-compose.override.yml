@@ -1,9 +1,0 @@
-version: '3.8'
-
-services:
-  mock_auth:
-    build: ./mock_auth
-    ports:
-      - "8001:8000"
-    environment:
-      - AUTH_PROXY_URL=http://mock_auth:8000

@@ -1,5 +1,0 @@
-steps:
-  - name: deploy
-    commands:
-      - cp .env.gitea .env
-      - docker-compose up -d

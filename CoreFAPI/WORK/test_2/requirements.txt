@@ -1,7 +1,0 @@
-fastapi
-pydantic
-sqlalchemy
-alembic
-uvicorn
-asyncpg
-psycopg2-binary>=2.9.6

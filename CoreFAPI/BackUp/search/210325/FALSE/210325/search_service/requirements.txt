@@ -1,9 +1,0 @@
-fastapi
-uvicorn
-elasticsearch==7.17.9
-httpx
-pydantic
-pydantic-settings
-python-dotenv
-redis
-aiohttp
